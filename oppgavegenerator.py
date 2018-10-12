@@ -10,6 +10,9 @@ from matplotlib.ticker import AutoMinorLocator
 # TODOS:
 # - TODO :: Diagramtolkning: beholder a-versjonen, men gjør slik at den ene grafen får litt større spredning. 
 # - TODO :: Endre fasitgenerering til å ta høyde for at frekvenstabell- og analyseoppgavene er endret
+# - TODO :: plot_list har en ekstremt hackete løsning for å endre spredningen. Denne bør egentlig ikke bruke
+#           histogram for å finne data
+
 solutions = False
 test = False
  
@@ -231,10 +234,13 @@ def plot_histogram(data, file_name="test_hist.png", seed_string="test", sol=Fals
  
  
 def plot_list(level="a", name="test.png", start=None, end=None, stepsize=None):
-    data1, bins = np.histogram([rnd.triangular(0.0, 10, mode=4) for _ in range(1000)], 10)
-    data2, _ = np.histogram([rnd.triangular(0.0, 10, mode=4) for _ in range(4000)], 10)
+    # data1, bins = np.histogram([rnd.triangular(0.0, 10, mode=4) for _ in range(1000)], 10)
+    # data2, _ = np.histogram([rnd.triangular(0.0, 10, mode=4) for _ in range(4000)], 10)
+    err = 8
+    data1, bins = np.histogram([rnd.gauss(0.0, 1) for _ in range(1000)], 10)
+    data2, _ = np.histogram([rnd.gauss(0.0, 1) for _ in range(4000)], 10 + 2 * err)
 
-    plot_list_bar(data1, data2, name=name, start=0, end=10, stepsize=stepsize)
+    plot_list_bar(data1, data2[err // 2  + 2: 12 + err // 2], name=name, start=0, end=10, stepsize=stepsize)
  
 def plot_list_line(lst1, lst2=None, name='test_line.png'):
     """Create a line graph of lst1 (and or 2)."""
