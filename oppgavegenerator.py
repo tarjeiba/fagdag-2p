@@ -8,16 +8,8 @@ import matplotlib.pyplot as plt
 from matplotlib.ticker import AutoMinorLocator
 
 # TODOS:
-# - TODO :: Frekvenstabell: to nivåer: velg mellom to alternativer/nivåer a)ikke gruppert data og b) gruppert data. 
-
-# - TODO :: a) være som den er
-# - TODO :: b) gruppert data - skal bare finne median og gjennomsnitt
-
 # - TODO :: Diagramtolkning: beholder a-versjonen, men gjør slik at den ene grafen får litt større spredning. 
-
-# - TODO :: Statistisk analyse: velg mellom to alternativer/nivåer a) fra versjon a og b) versjonen. 
-# - TODO :: a) versjonen beholdes - men skriv på punkt to "tegn et diagram som illustrerer dette" (slik at de må ta eget valg av diagram). b) fin som den er, men reduser til 50 tall.  
-
+# - TODO :: Endre fasitgenerering til å ta høyde for at frekvenstabell- og analyseoppgavene er endret
 solutions = False
 test = False
  
@@ -31,20 +23,6 @@ levels = ['a']
 number_of_students = 2
  
 replacements = {}
- 
-replacements_a = {
-    '{FREKVENSTABELLTEKST}'   : '/median/, /typetall/, /gjennomsnitt/ og /variasjonsbredde/',
-    '{FREKVENSTABELLHEADING}' : '| Terningkast | Frekvens |',
-    '{FREKVENSTABELLDATA}'    : '',
-    }
- 
- 
-replacements_b = {
-    '{FREKVENSTABELLTEKST}'   : '/median/, /gjennomsnitt/, /kvartilbredde/ og /standardavvik/',
-    '{FREKVENSTABELLHEADING}' : '| Poeng | Frekvens |',
-    '{FREKVENSTABELLDATA}'    : '',
-    }
- 
  
 words_easy = ['median', 'typetall', 'gjennomsnitt', 'kvartilbredde']
 words_hard = ['statistisk modell', 'historgram', 'grupperte data', 'varians', 'standardavvik']
@@ -79,7 +57,6 @@ def stddev_list(lst):
     sqr_diffs = [(x - av) ** 2 for x in lst]
     n = len(lst)
     sum_diffs = sum(sqr_diffs)
-
     return math.sqrt(sum_diffs / (n - 1))
     
 
@@ -93,7 +70,6 @@ def interquartile_range_list(lst):
     lower = srlst[:math.floor(len(srlst) / 2)]
     higher = srlst[math.ceil(len(srlst) / 2):]
     return median_list(higher) - median_list(lower)
- 
  
 def range_freq_table(lst_of_tups):
     """Return the range of the values in a frequency table."""
@@ -255,13 +231,10 @@ def plot_histogram(data, file_name="test_hist.png", seed_string="test", sol=Fals
  
  
 def plot_list(level="a", name="test.png", start=None, end=None, stepsize=None):
-    if level == "a":
-        data1, bins = np.histogram([rnd.triangular(0.0, 10.0, mode=4) for _ in range(1000)], 10)
-        data2, _ = np.histogram([rnd.triangular(0.0, 10, mode=4) for _ in range(4000)], 10)
- 
-        plot_list_bar(data1, data2, name=name, start=start, end=end, stepsize=stepsize)
-    else:
-        plot_list_line(create_line_data(20), lst2=create_line_data(20, stddev=20000), name=name)
+    data1, bins = np.histogram([rnd.triangular(0.0, 10, mode=4) for _ in range(1000)], 10)
+    data2, _ = np.histogram([rnd.triangular(0.0, 10, mode=4) for _ in range(4000)], 10)
+
+    plot_list_bar(data1, data2, name=name, start=0, end=10, stepsize=stepsize)
  
 def plot_list_line(lst1, lst2=None, name='test_line.png'):
     """Create a line graph of lst1 (and or 2)."""
@@ -491,7 +464,7 @@ def analyse_points(level="a", length=32,  seed_string="test", sol=False, dictkey
         lst = [rnd.randint(1, 20) for _ in range(32)]
  
     elif level == "b":
-        lst = [int(rnd.gauss(60, 25)) for _ in range(68)]
+        lst = [int(rnd.gauss(60, 25)) for _ in range(50)]
         for i, item in enumerate(lst):
             if item < 0:
                 lst[i] = 0
@@ -549,7 +522,7 @@ def analyse_oppgave(level="a", seed_string="test", sol=False, dictkey=None):
             "poengene, som var fra 0 til 20.\n\n"
             "{POINTS}\n\n"
             "- Regn ut gjennomsnitts- og medianpoengene til elevene.\n"
-            "- Tegn et søylediagram som visualiserer dataene"
+            "- Tegn et diagram som illustrerer dataene"
             "".format(POINTS=analyse_points(level="a", seed_string=seed_string, sol=sol, dictkey=dictkey)))
  
     elif level == "b":
@@ -581,9 +554,13 @@ def create_assignment(group="testgroup", student=1, level="a", template=template
  
     save_file = open(page_name, 'w')
     plot_list(level=level, name=image_name)
- 
-    replacements['{FREKVENSTABELLDATA}'] = populate_freq_table(
-        level=level, seed_string=name, sol=solutions, dictkey='{FREKVENSTABELLFASIT}')
+
+    replacements['{FREKVENSTABELLHEADINGB}'] = '| Poeng | Frekvens |'
+    replacements['{FREKVENSTABELLHEADINGA}'] = '| Terningkast | Frekvens |'
+    replacements['{FREKVENSTABELLDATAA}'] = populate_freq_table(
+        level="a", seed_string=name, sol=solutions, dictkey='{FREKVENSTABELLFASIT}')
+    replacements['{FREKVENSTABELLDATAB}'] = populate_freq_table(
+        level="b", seed_string=name, sol=solutions, dictkey='{FREKVENSTABELLFASIT}')
     replacements['{DEFINISJONSOPPGAVE}'] = draw_words(
         words_easy)
     replacements['{SENTRALMAALSOPPGAVE}'] = pretty_print_list(
@@ -594,8 +571,10 @@ def create_assignment(group="testgroup", student=1, level="a", template=template
         level=level, seed_string=name, sol=solutions, dictkey='{NYTTSNITTFASIT}')
     replacements['{KUMMULATIVMATCH}'] = four_cummulative_graphs(
         level=level, seed_string=name, file_name=image_name, sol=solutions, dictkey='{KUMMULATIVMATCHFASIT}')
-    replacements['{ANALYSEOPPGAVE}'] = analyse_oppgave(
-        level=level, seed_string=name, sol=solutions, dictkey='{ANALYSEOPPGAVEFASIT}')
+    replacements['{ANALYSEOPPGAVEA}'] = analyse_oppgave(
+        level="a", seed_string=name, sol=solutions, dictkey='{ANALYSEOPPGAVEFASIT}')
+    replacements['{ANALYSEOPPGAVEB}'] = analyse_oppgave(
+        level="b", seed_string=name, sol=solutions, dictkey='{ANALYSEOPPGAVEFASIT}')
     replacements['{HISTOGRAM}'] = plot_histogram(
         histogram_data(level=level, seed_string=name, sol=solutions, dictkey='{HISTOGRAMFASIT}'), file_name=image_name, sol=solutions, dictkey='{HISTOGRAMFASIT}')
     replacements['{HISTOGRAMADD}'] = histogram_addition(
