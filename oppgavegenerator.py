@@ -4,7 +4,8 @@ import pdb
 import random as rnd
 import numpy as np
 import matplotlib.pyplot as plt
- 
+import statistics as stat
+
 from matplotlib.ticker import AutoMinorLocator
 
 # TODOS:
@@ -13,8 +14,7 @@ from matplotlib.ticker import AutoMinorLocator
 # - TODO :: plot_list har en ekstremt hackete løsning for å endre spredningen. Denne bør egentlig ikke bruke
 #           histogram for å finne data
 
-solutions = False
-test = False
+solutions = True
  
 colors = {
     'blue' : (0.4, 0.5977, 1.0),
@@ -66,13 +66,12 @@ def stddev_list(lst):
 def range_lst(lst):
     """Return the range of a list of numbers."""
     return max(lst) - min(lst)
- 
+
 def interquartile_range_list(lst):
-    """Return the interquartile range for å list of numbers."""
-    srlst = sorted(lst)
-    lower = srlst[:math.floor(len(srlst) / 2)]
-    higher = srlst[math.ceil(len(srlst) / 2):]
-    return median_list(higher) - median_list(lower)
+    """Return the interquartile range of a list of numbers."""
+    lower = np.percentile(lst, 25)
+    higher = np.percentile(lst, 75)
+    return higher - lower
  
 def range_freq_table(lst_of_tups):
     """Return the range of the values in a frequency table."""
@@ -129,11 +128,9 @@ def create_line_data(n, stddev=1000, sol=False, dictkey=None):
  
     return list(zip(years, values))
  
- 
 def average_list(lst):
     """Return average of all elements in list lst."""
     return sum(lst)/len(lst)
- 
  
 def average_freq_dice(lst):
     """Return average of all elements in list of dice throws
@@ -147,7 +144,6 @@ def average_freq_dice(lst):
  
     return sums/tot
  
- 
 def random_list_easy(n, maximum=6, sol=False, dictkey=None):
     """Return a list of length n where the numbers are "easy" to use for
     statistical analysis."""
@@ -159,26 +155,25 @@ def random_list_easy(n, maximum=6, sol=False, dictkey=None):
                                  "".format(avg))
     return list(map(str, value))
  
- 
 def random_list_hard(n=32, mu=15, sigma=10, sol=False, dictkey=None):
     """Return a list of length n where the value of each member is
     Gaussian distributed with an expected value of mu and a std.dev. of sigma.
  
     n has a default value of 32 due to it being a typical class size.
     """
-    value = [rnd.gauss(mu, sigma) for _ in range (n)]
+    values = [rnd.gauss(mu, sigma) for _ in range (n)]
     if sol:
         repl[dictkey] = ("Medianen er {:.2f}.\n"
                          "Gjennomsnittet er {:.2f}.\n"
                          "Kvartilbredden er {:.2f}.\n"
                          "Standardavviket er {:.2f}.\n"
                          .format(
-                             median_list(value),
-                             average_list(value),
-                             interquartile_range_list(value),
-                             stddev_list(value)
+                             median_list(values),
+                             average_list(values),
+                             interquartile_range_list(values),
+                             stat.stdev(values)
                          ))
-    return ["{0:.2f}".format(val) for val in value]
+    return ["{0:.2f}".format(val) for val in values]
  
  
 def histogram_addition(level="a"):
@@ -603,25 +598,17 @@ def create_assignment(group="testgroup", student=1, level="a", template=template
     return None
  
  
-if test:
-    print("Running test suite.")
-    for level in levels:
-        if level == "a":
-            repl = {**replacements, **replacements_a}
-        else:
-            repl = replacements_b.copy()
-        create_assignment(level=level, replacements=repl)
+# if test:
+#     print("Running test suite.")
+#     repl = {**replacements}
+#     create_assignment(level=level, replacements=repl)
  
-else:
-    print("Running regular setup.")
-    for group in groups:
-        print("Generating for {}".format(group))
-        for student in range(1, number_of_students+1):
-            print(".", end="")
-            for level in levels:
-                if level == "a":
-                    repl = {**replacements, **replacements_a}
-                else:
-                    repl = {**replacements, **replacements_b}
-                create_assignment(group, student, level, replacements=repl)
-                
+# else:
+print("Running regular setup.")
+for group in groups:
+    print("Generating for {}".format(group))
+    for student in range(1, number_of_students+1):
+        print(".", end="")
+        repl = {**replacements}
+        create_assignment(group, student, level, replacements=repl)
+    print("")
