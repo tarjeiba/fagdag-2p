@@ -15,6 +15,10 @@ Finn /median/, /gjennomsnitt/, /kvartilbredde/ og /standardavvik/ for følgende 
    34.41   34.44   10.08   46.18    9.79    2.98    5.71
 #+END_SRC
 
+Medianen er 19.27.
+Gjennomsnittet er 20.41.
+Kvartilbredden er 21.29.
+Standardavviket er 12.57.
 
 
 * Frekvenstabell
@@ -75,7 +79,7 @@ Histogrammet under viser fordelingen av svar på en "hvor mange pastiller er det
 - Ut fra verdiene i histogrammet over, hva vil du tro mengden pastiller i krukka var?
 
 
-
+Fasiten er 38.
 
 * Kumulativ match
 Under vises et stolpediagram og fire foreslåtte kummulative grafer. Hvilken av de fire alternativene tilhører dataene fra stolpediagrammet?
@@ -83,6 +87,8 @@ Under vises et stolpediagram og fire foreslåtte kummulative grafer. Hvilken av 
 [[./figurer/2PBA4-02-cumbar.png]]
 
 [[./figurer/2PBA4-02-cumcum.png]]
+
+Fasiten er c).
 
 * Foreslå visualisering
 Velg to av pounktene under og illustrer dem i hvert sitt diagram. Begrunn valget av diagram.

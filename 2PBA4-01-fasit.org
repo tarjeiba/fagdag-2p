@@ -15,7 +15,10 @@ Finn /median/, /gjennomsnitt/, /kvartilbredde/ og /standardavvik/ for følgende 
    26.31    6.68   10.20    9.41   -0.88   31.83   16.72
 #+END_SRC
 
-
+Medianen er 10.20.
+Gjennomsnittet er 12.18.
+Kvartilbredden er 12.47.
+Standardavviket er 9.26.
 
 * Frekvenstabell
 Velg en av frekvenstabellene under. Velger du den første, skal du finne /median/, /typetall/, /gjennomsnitt/ og /variasjonsbredde/. Velger du den andre, skal du kun finne /median/ og /gjennomsnitt/.
@@ -53,8 +56,6 @@ Medianen er 76.25.
 Kvartilbredden er 31.25.
 Standardavviket er 22.80.
 
-
-
 * Den nye læreren
 På en skole jobbet det i utgangspunktet 17 realfagslærere, som da hadde en gjennomsnittsalder på 41.41 år. Det begynner så en ny lærer på skolen, og brått blir gjennomsnittsalderen 42.00 år.
 
@@ -75,7 +76,7 @@ Histogrammet under viser fordelingen av svar på en "hvor mange pastiller er det
 - Ut fra verdiene i histogrammet over, hva vil du tro mengden pastiller i krukka var?
 
 
-
+Fasiten er 38.
 
 * Kumulativ match
 Under vises et stolpediagram og fire foreslåtte kummulative grafer. Hvilken av de fire alternativene tilhører dataene fra stolpediagrammet?
@@ -83,6 +84,8 @@ Under vises et stolpediagram og fire foreslåtte kummulative grafer. Hvilken av 
 [[./figurer/2PBA4-01-cumbar.png]]
 
 [[./figurer/2PBA4-01-cumcum.png]]
+
+Fasiten er c).
 
 * Foreslå visualisering
 Velg to av pounktene under og illustrer dem i hvert sitt diagram. Begrunn valget av diagram.

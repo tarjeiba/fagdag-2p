@@ -76,6 +76,8 @@ Under vises et stolpediagram og fire foreslåtte kummulative grafer. Hvilken av 
 
 [[./figurer/2PBA4-01-cumcum.png]]
 
+
+
 * Foreslå visualisering
 Velg to av pounktene under og illustrer dem i hvert sitt diagram. Begrunn valget av diagram.
 
