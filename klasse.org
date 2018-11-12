@@ -1,0 +1,59 @@
+#+BEGIN_SRC python :session :results output org
+elever = [
+    'Huda',
+    'Varin',
+    'Silje',
+    'Stine',
+    'Siri',
+    'Maria',
+    'Rebekka',
+    'Emma',
+    'Cecilie',
+    'Iben',
+    'Frida',
+    'Synne',
+    'Maimoona',
+    'Thea',
+    'Kelly',
+    'Hanna',
+    'Sara',
+    'Ida',
+    'Elise',
+    'Rikke',
+    'Hedda',
+    'Ada',
+    'Karina',
+    ]
+
+print("|Navn | «lett» | «vanskelig» |")
+for i, elev in enumerate(elever):
+    print("| {0} | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-{1}-a][lenke]] | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-{1}-b][lenke]] |"
+          .format(elev, str(i).zfill(2)))
+#+END_SRC
+
+
+| Navn     | «lett» | «vanskelig» |
+|----------+--------+-------------|
+| Huda     | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-00-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-00-b][lenke]]       |
+| Varin    | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-01-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-01-b][lenke]]       |
+| Silje    | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-02-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-02-b][lenke]]       |
+| Stine    | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-03-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-03-b][lenke]]       |
+| Siri     | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-04-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-04-b][lenke]]       |
+| Maria    | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-05-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-05-b][lenke]]       |
+| Rebekka  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-06-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-06-b][lenke]]       |
+| Emma     | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-07-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-07-b][lenke]]       |
+| Cecilie  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-08-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-08-b][lenke]]       |
+| Iben     | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-09-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-09-b][lenke]]       |
+| Frida    | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-10-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-10-b][lenke]]       |
+| Synne    | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-11-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-11-b][lenke]]       |
+| Maimoona | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-12-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-12-b][lenke]]       |
+| Thea     | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-13-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-13-b][lenke]]       |
+| Kelly    | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-14-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-14-b][lenke]]       |
+| Hanna    | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-15-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-15-b][lenke]]       |
+| Sara     | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-16-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-16-b][lenke]]       |
+| Ida      | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-17-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-17-b][lenke]]       |
+| Elise    | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-18-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-18-b][lenke]]       |
+| Rikke    | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-19-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-19-b][lenke]]       |
+| Hedda    | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-20-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-20-b][lenke]]       |
+| Ada      | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-21-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-21-b][lenke]]       |
+| Karina   | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-22-a][lenke]]  | [[https://tabaa004.github.io/statistikk-oppgave/2PB1-22-b][lenke]]       |

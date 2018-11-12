@@ -1,0 +1,127 @@
+#+SETUPFILE:orgheader_nojs.org
+#+Title: 2P fagdag - Statistikkoppgaver
+Du er elev 5 i klasse 2PBC4.
+
+* Definisjon
+Gjør rede for følgende begrep og gi et eksempel på hver:
+
+kvartilbredde, typetall og gjennomsnitt
+
+* Bruk av sentral- og spredningsmål
+Finn /median/, /gjennomsnitt/, /kvartilbredde/ og /standardavvik/ for følgende verdier:
+
+#+BEGIN_SRC txt
+   41.59   12.52    6.03    3.45    5.44   21.57   37.63   11.99
+   16.07   11.23   21.02   18.17    5.33   20.43   37.27
+#+END_SRC
+
+
+
+* Frekvenstabell
+Velg en av frekvenstabellene under. Velger du den første, skal du finne /median/, /typetall/, /gjennomsnitt/ og /variasjonsbredde/. Velger du den andre, skal du kun finne /median/ og /gjennomsnitt/.
+
+*Alternativ 1*
+| Terningkast | Frekvens |
+|-|-|
+| 1 | 4 |
+| 2 | 3 |
+| 3 | 4 |
+| 4 | 2 |
+| 5 | 5 |
+| 6 | 4 |
+
+
+
+
+*Alternativ 2*
+| Poeng | Frekvens |
+|-|-|
+| [0, 20> | 4 |
+| [20, 40> | 9 |
+| [40, 60> | 0 |
+| [60, 80> | 9 |
+| [80, 95> | 6 |
+| [95, 100> | 6 |
+
+
+
+
+
+* Den nye læreren
+På en skole jobbet det i utgangspunktet 10 realfagslærere, som da hadde en gjennomsnittsalder på 47.30 år. Det begynner så en ny lærer på skolen, og brått blir gjennomsnittsalderen 48.45 år.
+
+Hva er aldereden til den nye læreren?
+ 
+
+
+* Diagramtolkning
+Diagrammet under viser visualiseringen av to datasett. Hva kan du si om sentral- og spredningsmål for de to i forhold til hverandre?
+
+[[./figurer/2PBC4-05.png]]
+
+* Histogrammet
+Histogrammet under viser fordelingen av svar på en "hvor mange pastiller er det i krukka"-oppgave, hvor  mange deltok?
+
+[[./figurer/2PBC4-05_hist.png]]
+
+- Ut fra verdiene i histogrammet over, hva vil du tro mengden pastiller i krukka var?
+
+
+
+
+* Kumulativ match
+Under vises et stolpediagram og fire foreslåtte kummulative grafer. Hvilken av de fire alternativene tilhører dataene fra stolpediagrammet?
+
+[[./figurer/2PBC4-05-cumbar.png]]
+
+[[./figurer/2PBC4-05-cumcum.png]]
+
+* Foreslå visualisering
+Velg to av pounktene under og illustrer dem i hvert sitt diagram. Begrunn valget av diagram.
+
+- Karakterfordelingen i en klasse etter en prøve (rundt 30 elever)
+- Karakterfordelingen for en /skole/ etter en heldagsprøve i norsk (rundt 600 elever)
+- Gjennomsnittskarakteren for årets FIFA-spill for årene 1996 til 2017.
+- Aldersfordelingen for de som ser på Dagsrevyen mer enn to ganger hver uke.
+
+* Skisser
+For to av punktene i forrige oppgave, skisser hvordan en slik fordeling /kan/ se ut.
+
+* Statistisk analyse
+Velg ett av de to alternativene under.
+
+*Alternativ 1*
+I en 2P-klasse ble det gjennomført en prøve, under vises poengene, som var fra 0 til 20.
+
+#+BEGIN_SRC txt
+      15      17      20       2      18      13       9       9
+      17      16      19      17       7       5      18      19
+       5      19       5       2      11       5      16       4
+      19      13      20      10      14       9      14       8
+#+END_SRC
+
+- Regn ut gjennomsnitts- og medianpoengene til elevene.
+- Tegn et diagram som illustrerer dataene
+
+
+
+*Alternativ 2*
+På en skole ble det gjennomført en 2P-prøve for et trinn. Poengene, som var fra 0 til 100, blei som vist under.
+
+#+BEGIN_SRC txt
+      94      56     100      39      25      53      54      14
+      65      47     100      45      32      47      50      34
+      71      94      64      90      72      79      47      63
+      39      90     100      71      74      41      67      26
+      41      98      48      82      33      19      72      89
+      76      51      56      72     100      49       4      89
+      66      26
+#+END_SRC
+
+- Grupper dataene i en frekvenstabell hvor gruppene er [0, 20>, [20, 40>, [40, 60>, [60, 80>, [80, 95>, [95, 100].
+- Finn gjennomsnittspoengene /både/ via det grupperte materialet, og eksakt. Forklar eventuelle forskjeller på de to tallene.
+- Vis dataene i et histogram.
+
+Gruppene over viser til en typisk karakterinndeling. En av lærerne på skolen, ønsker å gjøre det litt vanskeligere å bestå,så alt under 25 poeng gir karakteren 1, men litt lettere å få karakteren 6, nå fra 90 poeng. Hvordan ville det påvirket karakterfordelingenpå trinnet?
+
+

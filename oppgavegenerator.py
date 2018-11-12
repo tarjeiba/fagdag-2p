@@ -9,21 +9,33 @@ import statistics as stat
 from matplotlib.ticker import AutoMinorLocator
 
 # TODOS:
-# - TODO :: Diagramtolkning: beholder a-versjonen, men gjør slik at den ene grafen får litt større spredning. 
-# - TODO :: Endre fasitgenerering til å ta høyde for at frekvenstabell- og analyseoppgavene er endret
-# - TODO :: plot_list har en ekstremt hackete løsning for å endre spredningen. Denne bør egentlig ikke bruke
-#           histogram for å finne data
+# - TODO :: Endre fasitgenerering til å ta høyde for at analyseoppgavene er endret
+# - TODO :: Dobbeltsjekk histogramtallene
 
 colors = {
     'blue' : (0.4, 0.5977, 1.0),
     'pink' : (0.8, 0.7, 1.0),
     }
  
-groups = ['test']
-levels = ['a']
-number_of_students = 2
+groups = ['2PBA4',
+          '2PBB4',
+          '2PBC4',
+          '2PBD4',
+          '2PBE4',
+          '2PBX4']
+
+number_of_students = 32
  
 replacements = {}
+
+solutions = {'{SENTRALMAALSOPPGAVEFASIT}' : "",
+                     '{FREKVENSTABELLFASITA}' : "",
+                     '{FREKVENSTABELLFASITB}' : "",
+                     '{NYTTSNITTFASIT}' : "",
+                     '{HISTOGRAMFASIT}' : "",
+                     '{ANALYSEOPPGAVEFASITA}' : "",
+                     '{ANALYSEOPPGAVEFASITB}' : ""}
+
  
 words_easy = ['median', 'typetall', 'gjennomsnitt', 'kvartilbredde']
 words_hard = ['statistisk modell', 'historgram', 'grupperte data', 'varians', 'standardavvik']
@@ -34,20 +46,6 @@ template_file_name = 'oppgave-mal.org'
 template_file = open(template_file_name, 'r', encoding="utf-8")
 template = template_file.read()
 template_file.close()
- 
- 
-def median_list(lst):
-    """Return the median value of a list."""
-    srtlst = sorted(lst)
- 
-    length = len(srtlst)
- 
-    if length % 2:
-        return srtlst[math.floor(len(srtlst) / 2)]
-    else:
-        middle = length/2
-         
-        return sum(srtlst[(length//2-1):(length//2+1)])/2
 
 def range_lst(lst):
     """Return the range of a list of numbers."""
@@ -84,7 +82,7 @@ def median_freq_table(lst_of_tups):
     lst = []
     for tup in lst_of_tups:
         lst.extend([tup[0]] * tup[1])
-    return median_list(lst)
+    return np.median(lst)
  
  
 def mode_freq_table(lst_of_tups):
@@ -99,16 +97,12 @@ def create_line_data(n, stddev=1000, sol=False, dictkey=None):
  
     start_year = 1996
     years = range(start_year, start_year + n)
- 
     coefficient = rnd.randint(1, 100)
- 
     if rnd.random() > 0.5:
         coefficient *= -1
- 
     k_value = rnd.random()
     if rnd.random() > 0.5:
         k_value *= -1
- 
     values = [k_value * t + coefficient for t in range(n)]
     values = [i + rnd.gauss(0, stddev) for i in values]
  
@@ -154,8 +148,8 @@ def random_list_hard(n=32, mu=15, sigma=10, sol=False, dictkey=None):
                          "Kvartilbredden er {:.2f}.\n"
                          "Standardavviket er {:.2f}.\n"
                          .format(
-                             median_list(values),
-                             average_list(values),
+                             np.median(values),
+                             np.average(values),
                              interquartile_range_list(values),
                              np.std(values, ddof=1) # TODO :: ddof=? Spør
                          ))
@@ -415,7 +409,7 @@ def wrap_text(string):
     return "#+BEGIN_SRC txt\n" + string +  "\n#+END_SRC"
  
  
-def nplusone_average(level="a", seed_string="test", sol=False, dictkey=None):
+def nplusone_average(dictkey=None):
     """Return string with old average (init), number of students (n) and new average."""
  
     new = rnd.randint(22, 67)
@@ -424,17 +418,18 @@ def nplusone_average(level="a", seed_string="test", sol=False, dictkey=None):
     init_average = sum(rnd.sample(range(22, 67), n)) / n
     new_average = (init_average * n + new) / (n + 1)
 
-    value = ("På en skole jobber det i utgangspunktet {0} realfagslærere, "
-             "som da hadde en gjennomsnittsalder på {1:.2f} år. Det begynner så en "
-             "ny lærer på skolen, og brått blir gjennomsnittsalderen {2:.2f} år.\n\n"
-             "Hva er aldereden til den nye læreren?").format(n, init_average, new_average)
+    value = (
+        "På en skole jobbet det i utgangspunktet {0} realfagslærere, "
+        "som da hadde en gjennomsnittsalder på {1:.2f} år. Det begynner så en "
+        "ny lærer på skolen, og brått blir gjennomsnittsalderen {2:.2f} år.\n\n"
+        "Hva er aldereden til den nye læreren?"
+    ).format(n, init_average, new_average)
  
-    if sol:
-        repl[dictkey] = 'Fasiten er {}.'.format(new)
+    solutions[dictkey] = 'Fasiten er {}.'.format(new)
  
     return value
  
-def analyse_points(level="a", length=32,  seed_string="test", sol=False, dictkey=None):
+def analyse_points(level="a", length=32,  seed_string="test", dictkey=None):
     if level == "a":
         lst = [rnd.randint(1, 20) for _ in range(32)]
  
@@ -447,13 +442,13 @@ def analyse_points(level="a", length=32,  seed_string="test", sol=False, dictkey
                 lst[i] = 100
  
  
-    if sol and level == "a":
-        repl[dictkey] = ("Medianpoengene er {:.2f}.\n"
+    if level == "a":
+        solutions[dictkey] = ("Medianpoengene er {:.2f}.\n"
                                  "Gjennomsnittspoengene er {:.2f}.\n"
-                                 "".format(median_list(lst),
-                                           average_list(lst)))
-    if sol and level == "b":
-        repl[dictkey] = analyse_fasit(lst)
+                                 "".format(np.median(lst),
+                                           np.average(lst)))
+    if level == "b":
+        solutions[dictkey] = analyse_fasit(lst)
  
     return pretty_print_list(lst)
  
@@ -463,7 +458,7 @@ def centers(lst):
     return [(lst[i] + lst[i+1])/2 for i in range(len(lst) - 1)]
  
 def analyse_fasit(lst):
-    act_average = average_list(lst)
+    act_average = np.average(lst)
     bins1 = [0, 20, 40, 60, 80, 95, 100]
     bins2 = [0, 25, 40, 60, 80, 90, 100]
     centers1 = centers(bins1)
@@ -489,41 +484,35 @@ def analyse_fasit(lst):
     return return_string
  
  
-def analyse_oppgave(level="a", seed_string="test", sol=False, dictkey=None):
+def analyse_oppgave(level="a", seed_string="test", dictkey=None):
     """Returns a string containing the entire text to 'analyseoppgave'."""
-    base_a = (
-        "I en 2P-klasse ble det gjennomført en prøve, under vises "
-        "poengene, som var fra 0 til 20.\n\n"
-        "{POINTS}\n\n"
-        "- Regn ut gjennomsnitts- og medianpoengene til elevene.\n"
-        "- Tegn et diagram som illustrerer dataene"
-        "".format(POINTS=analyse_points(level="a", seed_string=seed_string, sol=sol, dictkey=dictkey)))
+    if level == "a":
+        return ("I en 2P-klasse ble det gjennomført en prøve, under vises "
+                "poengene, som var fra 0 til 20.\n\n"
+                "{POINTS}\n\n"
+                "- Regn ut gjennomsnitts- og medianpoengene til elevene.\n"
+                "- Tegn et diagram som illustrerer dataene"
+                "".format(POINTS=analyse_points(
+                    level="a", seed_string=seed_string, dictkey=dictkey)))
  
-    base_b = (
-            "På en skole ble det gjennomført en 2P-prøve for et trinn. Poengene, "
-            "som var fra 0 til 100, blei som vist under.\n\n"
-            "{POINTS}\n\n"
-            "- Grupper dataene i en frekvenstabell hvor gruppene er [0, 20>, [20, 40>, [40, 60>, [60, 80>, [80, 95>, [95, 100].\n"
-            "- Finn gjennomsnittspoengene /både/ via det grupperte materialet, og eksakt. Forklar eventuelle forskjeller på de to tallene.\n"
-            "- Vis dataene i et histogram.\n\n"
-            "Gruppene over viser til en typisk karakterinndeling. En av lærerne på skolen, ønsker å gjøre det litt vanskeligere å bestå,"
-            "så alt under 25 poeng gir karakteren 1, men litt lettere å få karakteren 6, nå fra 90 poeng. Hvordan ville det påvirket karakterfordelingen"
-            "på trinnet?"
-        "".format(POINTS=analyse_points(level="b", seed_string=seed_string, sol=sol, dictkey=dictkey)))
- 
-    base = (
-        "Velg ett av de to alternativene under:\n\n"
-        "*Alternativ 1*\n" +
-        base_a +
-        "*Alternativ 2*\n" +
-        base_b
-        )
+    elif level == "b":
+        return("På en skole ble det gjennomført en 2P-prøve for et trinn. Poengene, "
+               "som var fra 0 til 100, blei som vist under.\n\n"
+               "{POINTS}\n\n"
+               "- Grupper dataene i en frekvenstabell hvor gruppene er [0, 20>, [20, 40>, [40, 60>, [60, 80>, [80, 95>, [95, 100].\n"
+               "- Finn gjennomsnittspoengene /både/ via det grupperte materialet, og eksakt. Forklar eventuelle forskjeller på de to tallene.\n"
+               "- Vis dataene i et histogram.\n\n"
+               "Gruppene over viser til en typisk karakterinndeling. En av lærerne på skolen, ønsker å gjøre det litt vanskeligere å bestå,"
+               "så alt under 25 poeng gir karakteren 1, men litt lettere å få karakteren 6, nå fra 90 poeng. Hvordan ville det påvirket karakterfordelingen"
+               "på trinnet?"
+               "".format(POINTS=analyse_points(
+                   level="b", seed_string=seed_string, dictkey=dictkey)))
 
     return base
  
 def create_assignment(group="testgroup", student=1, template=template, replacements=None):
  
-    name = group + "-" + str(student).zfill(2) + "-" + level
+    name = group + "-" + str(student).zfill(2)
     save_string = template
     image_name = name + ".png"
     page_name = name + ".org"
@@ -532,47 +521,51 @@ def create_assignment(group="testgroup", student=1, template=template, replaceme
     rnd.seed(name)
  
     save_file = open(page_name, 'w')
+    save_solutions_file = open(page_name_solutions, 'w')
     plot_list(name=image_name)
-
-    solution_defaults = {'{SENTRALMAALSOPPGAVEFASIT}' : "",
-                         '{FREKVENSTABELLFASITA}' : "",
-                         '{FREKVENSTABELLFASITB}' : "",
-                         '{NYTTSNITTFASIT}' : "",
-                         '{HISTOGRAMFASIT}' : "",
-                         '{ANALYSEOPPGAVEFASIT}' : ""}
-                       
-    solutions = solution_defaults.copy()
 
     replacements['{FREKVENSTABELLHEADINGB}'] = '| Poeng | Frekvens |'
     replacements['{FREKVENSTABELLHEADINGA}'] = '| Terningkast | Frekvens |'
     replacements['{FREKVENSTABELLDATAA}'] = populate_freq_table_easy(
-        seed_string=name, dictkey='{FREKVENSTABELLFASITA }')
+        rnd.randint(15,25),
+        seed_string=name, dictkey='{FREKVENSTABELLFASITA}')
     replacements['{FREKVENSTABELLDATAB}'] = populate_freq_table_hard(
-        seed_string=name, sol=solutions, dictkey='{FREKVENSTABELLFASITB}')
+        rnd.randint(25,50),
+        seed_string=name, dictkey='{FREKVENSTABELLFASITB}')
     replacements['{DEFINISJONSOPPGAVE}'] = draw_words(
         words_easy)
     replacements['{SENTRALMAALSOPPGAVE}'] = pretty_print_list(
-        random_list_hard(15, sol=solutions, dictkey='{SENTRALMAALSOPPGAVEFASIT}'))
+        random_list_hard(15, dictkey='{SENTRALMAALSOPPGAVEFASIT}'))
     replacements['{DIAGRAM}'] = insert_image(
         image_name)
-    replacements['{NYTTSNITT}'] = nplusone_average(
-        level=level, seed_string=name, sol=solutions, dictkey='{NYTTSNITTFASIT}')
+    replacements['{NYTTSNITT}'] = nplusone_average(dictkey='{NYTTSNITTFASIT}')
     replacements['{KUMMULATIVMATCH}'] = four_cummulative_graphs(
-        level=level, seed_string=name, file_name=image_name, sol=solutions, dictkey='{KUMMULATIVMATCHFASIT}')
-    replacements['{ANALYSEOPPGAVE}'] = analyse_oppgave(seed_string=name, sol=solutions, dictkey='{ANALYSEOPPGAVEFASIT}')
+        seed_string=name, file_name=image_name, dictkey='{KUMMULATIVMATCHFASIT}')
+    replacements['{ANALYSEOPPGAVEA}'] = analyse_oppgave(
+        level="a", seed_string=name, dictkey='{ANALYSEOPPGAVEFASITA}')
+    replacements['{ANALYSEOPPGAVEB}'] = analyse_oppgave(
+        level="b", seed_string=name, dictkey='{ANALYSEOPPGAVEFASITB}')
     replacements['{HISTOGRAM}'] = plot_histogram(
-        histogram_data(level=level, seed_string=name, sol=solutions, dictkey='{HISTOGRAMFASIT}'), file_name=image_name, sol=solutions, dictkey='{HISTOGRAMFASIT}')
+        histogram_data(seed_string=name, dictkey='{HISTOGRAMFASIT}'),
+        file_name=image_name, dictkey='{HISTOGRAMFASIT}')
     replacements['{HISTOGRAMADD}'] = histogram_addition()
     replacements['{ELEVNUMMER}'] = str(student)
     replacements['{KLASSE}'] = str(group)
-    replacements['{LEVEL}'] = str(level)
- 
  
     for replacement in replacements:
         save_string = save_string.replace(replacement, replacements[replacement])
-     
+        save_string_solutions = save_string
+
+    for solution in solutions:
+        save_string = save_string.replace(
+            solution, "")
+        save_string_solutions = save_string_solutions.replace(
+            solution, solutions[solution])
+ 
     save_file.write(save_string)
+    save_solutions_file.write(save_string_solutions)
     save_file.close()
+    save_solutions_file.close()
     plt.close('all')
  
     return None

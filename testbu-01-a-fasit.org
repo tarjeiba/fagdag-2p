@@ -1,0 +1,102 @@
+#+SETUPFILE:~/.emacs.d/org-templates/level-1.org
+#+Title: 2P fagdag - Statistikkoppgaver - fasit
+Du er elev 1 i klasse testbu og har valgt oppgavenivå a.
+
+* Definisjon
+Gjør rede for følgende begrep og gi et eksempel på hver:
+
+gjennomsnitt, median og kvartilbredde
+
+* Bruk av sentral- og spredningsmål
+Finn /median/, /gjennomsnitt/, /kvartilbredde/ og /standardavvik/ for følgende verdier:
+
+#+BEGIN_SRC txt
+    8.35    5.49   15.44   32.70   12.13   19.78   18.71   13.03
+   -1.55   18.33   21.51   15.02    1.63   26.41   21.95
+#+END_SRC
+
+Medianen er 15.44.
+Gjennomsnittet er 15.26.
+Kvartilbredden er 13.16.
+
+
+* Frekvenstabell
+Finn /median/, /typetall/, /gjennomsnitt/ og /variasjonsbredde/ for dataene i frekvenstabellen under.
+
+| Terningkast | Frekvens |
+|-|-|
+| 1 | 1 |
+| 2 | 3 |
+| 3 | 2 |
+| 4 | 5 |
+| 5 | 3 |
+| 6 | 1 |
+
+
+Gjennomsnittet er 3.60.
+Medianen er 4.
+Typetallet er 4.
+Variasjonsbredden er 5.
+
+
+* Den nye læreren
+På en skole jobber det i utgangspunktet 17 realfagslærere, som da hadde en gjennomsnittsalder på 33.0 år. Det begynner så en ny lærer på skolen, og brått blir gjennomsnittsalderen 32.5 år.
+
+Hva er aldereden til den nye læreren?
+ 
+Fasiten er 24.
+
+* Diagramtolkning
+Diagrammet under viser visualiseringen av to datasett. Hva kan du si om sentral- og spredningsmål for de to i forhold til hverandre?
+
+[[./figurer/testbu-01-a.png]]
+
+{DIAGRAMFASIT}
+
+* Histogrammet
+Histogrammet under viser fordelingen av svar på en "hvor mange pastiller er det i krukka"-oppgave, hvor  mange deltok?
+
+[[./figurer/testbu-01-a_hist.png]]
+
+
+
+Fasiten er 50.
+
+* Kummulativ match
+Under vises et stolpediagram og fire foreslåtte kummulative grafer. Hvilken av de fire alternativene tilhører dataene fra stolpediagrammet?
+
+[[./figurer/testbu-01-a-cumbar.png]]
+
+[[./figurer/testbu-01-a-cumcum.png]]
+
+Fasiten er a).
+
+* Foreslå visualisering
+For hvert punkt under, hva slags diagram ville du valgt for å visualisere dataene? Begrunn valget ditt.
+
+
+
+- Karakterfordelingen i en klasse etter en prøve (rundt 30 elever)
+- Karakterfordelingen for en /skole/ etter en heldagsprøve i norsk (rundt 600 elever)
+- Gjennomsnittskarakteren for årets FIFA-spill for årene 1996 til 2017.
+- Aldersfordelingen for de som ser på Dagsrevyen mer enn to ganger hver uke.
+
+* Skisser
+For to av punktene i forrige oppgave, skisser hvordan en slik fordeling /kan/ se ut.
+
+* Statistisk analyse
+I en 2P-klasse ble det gjennomført en prøve, under vises poengene, som var fra 0 til 20.
+
+#+BEGIN_SRC txt
+      19       3       1      16       8       4       6      14
+      13      13      12      15      12      14      12       2
+      16       3       9      19      19      14       8       2
+      13      14      18       9      10      10      10       9
+#+END_SRC
+
+- Regn ut gjennomsnitts- og medianpoengene til elevene.
+- Tegn et søylediagram som visualiserer dataene
+
+Medianpoengene er 12.00.
+Gjennomsnittspoengene er 10.84.
+

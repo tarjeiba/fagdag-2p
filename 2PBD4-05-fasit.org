@@ -1,0 +1,151 @@
+#+SETUPFILE:orgheader_nojs.org
+#+Title: 2P fagdag - Statistikkoppgaver
+Du er elev 5 i klasse 2PBD4.
+
+* Definisjon
+Gjør rede for følgende begrep og gi et eksempel på hver:
+
+median, kvartilbredde og typetall
+
+* Bruk av sentral- og spredningsmål
+Finn /median/, /gjennomsnitt/, /kvartilbredde/ og /standardavvik/ for følgende verdier:
+
+#+BEGIN_SRC txt
+    8.03   16.69   12.19   -4.94   15.85  -12.11    8.26   14.69
+   24.79   27.16   11.68    1.63   -1.23    7.59   13.39
+#+END_SRC
+
+
+
+* Frekvenstabell
+Velg en av frekvenstabellene under. Velger du den første, skal du finne /median/, /typetall/, /gjennomsnitt/ og /variasjonsbredde/. Velger du den andre, skal du kun finne /median/ og /gjennomsnitt/.
+
+*Alternativ 1*
+| Terningkast | Frekvens |
+|-|-|
+| 1 | 4 |
+| 2 | 4 |
+| 3 | 3 |
+| 4 | 4 |
+| 5 | 4 |
+| 6 | 3 |
+
+
+Gjennomsnittet er 3.41.
+Medianen er 3.5.
+Typetallet er 1.
+Variasjonsbredden er 5.
+
+
+*Alternativ 2*
+| Poeng | Frekvens |
+|-|-|
+| [0, 20> | 0 |
+| [20, 40> | 0 |
+| [40, 60> | 8 |
+| [60, 80> | 9 |
+| [80, 95> | 0 |
+| [95, 100> | 0 |
+
+
+Gjennomsnittet er 60.59.
+Medianen er 60.00.
+Kvartilbredden er 18.89.
+Standardavviket er 9.98.
+
+
+
+* Den nye læreren
+På en skole jobbet det i utgangspunktet 13 realfagslærere, som da hadde en gjennomsnittsalder på 46.38 år. Det begynner så en ny lærer på skolen, og brått blir gjennomsnittsalderen 46.79 år.
+
+Hva er aldereden til den nye læreren?
+ 
+Fasiten er 52.
+
+* Diagramtolkning
+Diagrammet under viser visualiseringen av to datasett. Hva kan du si om sentral- og spredningsmål for de to i forhold til hverandre?
+
+[[./figurer/2PBD4-05.png]]
+
+* Histogrammet
+Histogrammet under viser fordelingen av svar på en "hvor mange pastiller er det i krukka"-oppgave, hvor  mange deltok?
+
+[[./figurer/2PBD4-05_hist.png]]
+
+- Ut fra verdiene i histogrammet over, hva vil du tro mengden pastiller i krukka var?
+
+
+
+
+* Kumulativ match
+Under vises et stolpediagram og fire foreslåtte kummulative grafer. Hvilken av de fire alternativene tilhører dataene fra stolpediagrammet?
+
+[[./figurer/2PBD4-05-cumbar.png]]
+
+[[./figurer/2PBD4-05-cumcum.png]]
+
+* Foreslå visualisering
+Velg to av pounktene under og illustrer dem i hvert sitt diagram. Begrunn valget av diagram.
+
+- Karakterfordelingen i en klasse etter en prøve (rundt 30 elever)
+- Karakterfordelingen for en /skole/ etter en heldagsprøve i norsk (rundt 600 elever)
+- Gjennomsnittskarakteren for årets FIFA-spill for årene 1996 til 2017.
+- Aldersfordelingen for de som ser på Dagsrevyen mer enn to ganger hver uke.
+
+* Skisser
+For to av punktene i forrige oppgave, skisser hvordan en slik fordeling /kan/ se ut.
+
+* Statistisk analyse
+Velg ett av de to alternativene under.
+
+*Alternativ 1*
+I en 2P-klasse ble det gjennomført en prøve, under vises poengene, som var fra 0 til 20.
+
+#+BEGIN_SRC txt
+      17      14      16       8       2      18      20      12
+      10      17       8      13      14      11      14      13
+      10      10      17      17      19       3      14       1
+       9      12       5      18      11      13      17       6
+#+END_SRC
+
+- Regn ut gjennomsnitts- og medianpoengene til elevene.
+- Tegn et diagram som illustrerer dataene
+
+Medianpoengene er 13.00.
+Gjennomsnittspoengene er 12.16.
+
+
+*Alternativ 2*
+På en skole ble det gjennomført en 2P-prøve for et trinn. Poengene, som var fra 0 til 100, blei som vist under.
+
+#+BEGIN_SRC txt
+      80      43      41      61      92      27      59      44
+      31      90      80      45      70      79      62      72
+      49      60      88      82      48      19      59      25
+      13      91      54      55      60      71     100      93
+      52      41      52      29      34      80      55      50
+      36      18     100      47      38      80      47      56
+      33      43
+#+END_SRC
+
+- Grupper dataene i en frekvenstabell hvor gruppene er [0, 20>, [20, 40>, [40, 60>, [60, 80>, [80, 95>, [95, 100].
+- Finn gjennomsnittspoengene /både/ via det grupperte materialet, og eksakt. Forklar eventuelle forskjeller på de to tallene.
+- Vis dataene i et histogram.
+
+Gruppene over viser til en typisk karakterinndeling. En av lærerne på skolen, ønsker å gjøre det litt vanskeligere å bestå,så alt under 25 poeng gir karakteren 1, men litt lettere å få karakteren 6, nå fra 90 poeng. Hvordan ville det påvirket karakterfordelingenpå trinnet?
+
+| Poeng | Antall |
+|-|-|
+| [0, 20> | 3 |
+| [20, 40> | 8 |
+| [40, 60> | 19 |
+| [60, 80> | 8 |
+| [80, 95> | 10 |
+| [95, 100> | 2 |
+
+Eksakt gjennomsnitt er 56.68.
+Gruppert gjennomsnitt er 57.00.
+
+Antall 1-ere etter endring er 3.
+Antall 6-ere etter endring er 6.
+

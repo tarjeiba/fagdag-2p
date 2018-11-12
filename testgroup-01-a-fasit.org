@@ -1,0 +1,93 @@
+#+SETUPFILE:~/.emacs.d/org-templates/level-1.org
+#+Title: 2P fagdag - Statistikkoppgaver - fasit
+Du er elev 1 i klasse testgroup og har valgt oppgavenivå a.
+
+* Definisjon
+Gjør rede for følgende begrep og gi et eksempel på hver:
+
+typetall, kvartilbredde og median
+
+* Bruk av sentral- og spredningsmål
+Finn /median/, /gjennomsnitt/, /kvartilbredde/ og /standardavvik/ for følgende verdier:
+
+#+BEGIN_SRC txt
+    6.48   23.06   27.84   21.94   20.56   24.67    5.04   13.45
+   26.16   -4.68   -2.36   13.80   16.31   11.14   14.78
+#+END_SRC
+
+
+
+* Frekvenstabell
+Finn /median/, /typetall/, /gjennomsnitt/ og /variasjonsbredde/ for dataene i frekvenstabellen under.
+
+| Terningkast | Frekvens |
+|-|-|
+| 1 | 2 |
+| 2 | 4 |
+| 3 | 4 |
+| 4 | 4 |
+| 5 | 2 |
+| 6 | 3 |
+
+
+{FREKVENSTABELLFASIT}
+
+* Den nye læreren
+På en skole jobber det i utgangspunktet 15 realfagslærere, som da hadde en gjennomsnittsalder på 41.40 år. Det begynner så en ny lærer på skolen, og brått blir gjennomsnittsalderen 40.75 år.
+
+Hva er aldereden til den nye læreren?
+ 
+
+
+* Diagramtolkning
+Diagrammet under viser visualiseringen av to datasett. Hva kan du si om sentral- og spredningsmål for de to i forhold til hverandre?
+
+[[./figurer/testgroup-01-a.png]]
+
+
+
+* Histogrammet
+Histogrammet under viser fordelingen av svar på en "hvor mange pastiller er det i krukka"-oppgave, hvor  mange deltok?
+
+[[./figurer/testgroup-01-a_hist.png]]
+
+
+
+
+
+* Kummulativ match
+Under vises et stolpediagram og fire foreslåtte kummulative grafer. Hvilken av de fire alternativene tilhører dataene fra stolpediagrammet?
+
+[[./figurer/testgroup-01-a-cumbar.png]]
+
+[[./figurer/testgroup-01-a-cumcum.png]]
+
+
+
+* Foreslå visualisering
+For hvert punkt under, hva slags diagram ville du valgt for å visualisere dataene? Begrunn valget ditt.
+
+
+
+- Karakterfordelingen i en klasse etter en prøve (rundt 30 elever)
+- Karakterfordelingen for en /skole/ etter en heldagsprøve i norsk (rundt 600 elever)
+- Gjennomsnittskarakteren for årets FIFA-spill for årene 1996 til 2017.
+- Aldersfordelingen for de som ser på Dagsrevyen mer enn to ganger hver uke.
+
+* Skisser
+For to av punktene i forrige oppgave, skisser hvordan en slik fordeling /kan/ se ut.
+
+* Statistisk analyse
+I en 2P-klasse ble det gjennomført en prøve, under vises poengene, som var fra 0 til 20.
+
+#+BEGIN_SRC txt
+      17       3       6       4       9      18       1      19
+      18      18      17      18      12       2       5       8
+      17      18      15       4      12      19       6       8
+       4       5      13       4       3       4       7       8
+#+END_SRC
+
+- Regn ut gjennomsnitts- og medianpoengene til elevene.
+- Tegn et søylediagram som visualiserer dataene
+
+

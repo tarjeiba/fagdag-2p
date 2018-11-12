@@ -14,6 +14,9 @@ Finn /median/, /gjennomsnitt/, /kvartilbredde/ og /standardavvik/ for følgende 
    19.68   19.54   15.21    6.58   11.58   20.74   -0.93   23.12
     0.42   21.79   21.11    2.76   24.35    0.87   12.02
 #+END_SRC
+
+
+
 * Frekvenstabell
 Velg en av frekvenstabellene under. Velger du den første, skal du finne /median/, /typetall/, /gjennomsnitt/ og /variasjonsbredde/. Velger du den andre, skal du kun finne /median/ og /gjennomsnitt/.
 
@@ -40,10 +43,12 @@ Velg en av frekvenstabellene under. Velger du den første, skal du finne /median
 
 
 * Den nye læreren
-På en skole jobber det i utgangspunktet 11 realfagslærere, som da hadde en gjennomsnittsalder på 40.91 år. Det begynner så en ny lærer på skolen, og brått blir gjennomsnittsalderen 42.33 år.
+På en skole jobbet det i utgangspunktet 11 realfagslærere, som da hadde en gjennomsnittsalder på 40.91 år. Det begynner så en ny lærer på skolen, og brått blir gjennomsnittsalderen 42.33 år.
 
 Hva er aldereden til den nye læreren?
  
+
+
 * Diagramtolkning
 Diagrammet under viser visualiseringen av to datasett. Hva kan du si om sentral- og spredningsmål for de to i forhold til hverandre?
 
@@ -53,6 +58,10 @@ Diagrammet under viser visualiseringen av to datasett. Hva kan du si om sentral-
 Histogrammet under viser fordelingen av svar på en "hvor mange pastiller er det i krukka"-oppgave, hvor  mange deltok?
 
 [[./figurer/test-02-a_hist.png]]
+
+- Ut fra verdiene i histogrammet over, hva vil du tro mengden pastiller i krukka var?
+
+
 
 
 * Kumulativ match
@@ -74,7 +83,7 @@ Velg to av pounktene under og illustrer dem i hvert sitt diagram. Begrunn valget
 For to av punktene i forrige oppgave, skisser hvordan en slik fordeling /kan/ se ut.
 
 * Statistisk analyse
-Velg én av de to alternative oppgavene under.
+Velg ett av de to alternativene under:
 
 *Alternativ 1*
 I en 2P-klasse ble det gjennomført en prøve, under vises poengene, som var fra 0 til 20.
@@ -87,9 +96,7 @@ I en 2P-klasse ble det gjennomført en prøve, under vises poengene, som var fra
 #+END_SRC
 
 - Regn ut gjennomsnitts- og medianpoengene til elevene.
-- Tegn et diagram som illustrerer dataene
-
-*Alternativ 2*
+- Tegn et diagram som illustrerer dataene*Alternativ 2*
 På en skole ble det gjennomført en 2P-prøve for et trinn. Poengene, som var fra 0 til 100, blei som vist under.
 
 #+BEGIN_SRC txt
@@ -107,3 +114,5 @@ På en skole ble det gjennomført en 2P-prøve for et trinn. Poengene, som var f
 - Vis dataene i et histogram.
 
 Gruppene over viser til en typisk karakterinndeling. En av lærerne på skolen, ønsker å gjøre det litt vanskeligere å bestå,så alt under 25 poeng gir karakteren 1, men litt lettere å få karakteren 6, nå fra 90 poeng. Hvordan ville det påvirket karakterfordelingenpå trinnet?
+
+
