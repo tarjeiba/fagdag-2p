@@ -8,21 +8,17 @@ import statistics as stat
 
 from matplotlib.ticker import AutoMinorLocator
 
-# TODOS:
-# - TODO :: Endre fasitgenerering til å ta høyde for at analyseoppgavene er endret
-# - TODO :: Dobbeltsjekk histogramtallene
-
 colors = {
     'blue' : (0.4, 0.5977, 1.0),
     'pink' : (0.8, 0.7, 1.0),
     }
  
-groups = ['2PBA4',
-          '2PBB4',
-          '2PBC4',
-          '2PBD4',
-          '2PBE4',
-          '2PBX4']
+groups = ['2PA4',
+          '2PB4',
+          '2PC4',
+          '2PD4',
+          '2PE4',
+          '2PX4']
 
 number_of_students = 32
  
@@ -129,9 +125,8 @@ def random_list_easy(n, maximum=6, sol=False, dictkey=None):
     statistical analysis."""
     value = [rnd.randint(1, maximum) for _ in range(n)]
  
-    if sol:
-        avg = average_freq_dice(value)
-        repl[dictkey] = ("Gjennomsnittet er {0}."
+    avg = average_freq_dice(value)
+    solutions[dictkey] = ("Gjennomsnittet er {0}."
                                  "".format(avg))
     return list(map(str, value))
  
@@ -142,17 +137,16 @@ def random_list_hard(n=32, mu=15, sigma=10, sol=False, dictkey=None):
     n has a default value of 32 due to it being a typical class size.
     """
     values = [rnd.gauss(mu, sigma) for _ in range (n)]
-    if sol:
-        repl[dictkey] = ("Medianen er {:.2f}.\n"
-                         "Gjennomsnittet er {:.2f}.\n"
-                         "Kvartilbredden er {:.2f}.\n"
-                         "Standardavviket er {:.2f}.\n"
-                         .format(
-                             np.median(values),
-                             np.average(values),
-                             interquartile_range_list(values),
-                             np.std(values, ddof=1) # TODO :: ddof=? Spør
-                         ))
+    solutions[dictkey] = ("Medianen er {:.2f}.\n"
+                     "Gjennomsnittet er {:.2f}.\n"
+                     "Kvartilbredden er {:.2f}.\n"
+                     "Standardavviket er {:.2f}.\n"
+                     .format(
+                         np.median(values),
+                         np.average(values),
+                         interquartile_range_list(values),
+                         np.std(values, ddof=0)
+                     ))
     return ["{0:.2f}".format(val) for val in values]
  
  
@@ -161,12 +155,7 @@ def histogram_addition():
  
  
 def histogram_data(num=25, level="test", seed_string="test", sol=False, dictkey=None):
-    # if sol:
-    #     repl[dictkey] = "Fasiten er {}.".format(num)
-    return ([rnd.gauss(25, 10) for _ in range(num)], [0, 5, 25, 30, 40, 50])
- 
- 
-# TODO: Måten histogram_data blir kalt på, gjør at den i praksis kun setter 
+    return ([abs(int(rnd.gauss(25, 10))) for _ in range(num)], [0, 5, 25, 30, 40, 50])
  
 def plot_histogram(data, file_name="test_hist.png", seed_string="test", sol=False, dictkey=None):
     """Create a histogram.
@@ -199,8 +188,7 @@ def plot_histogram(data, file_name="test_hist.png", seed_string="test", sol=Fals
     plot_figure.savefig("./figurer/" + figure_name)
     plt.close(plot_figure)
  
-    if sol:
-        repl[dictkey] = "Fasiten er {}.".format(num)
+    solutions[dictkey] = "Fasiten er {}.".format(num)
  
     return insert_image(figure_name)
  
@@ -332,8 +320,8 @@ def populate_freq_table_hard(n=None, t=8, seed_string="test", dictkey=None):
 
     sol_string = "Gjennomsnittet er {:.2f}.\n".format(center_avg)
     sol_string += "Medianen er {:.2f}.\n".format(q2)
-    sol_string += "Kvartilbredden er {:.2f}.\n".format(q3-q1)
-    sol_string += "Standardavviket er {:.2f}.\n".format(stddev)
+    # sol_string += "Kvartilbredden er {:.2f}.\n".format(q3-q1)
+    # sol_string += "Standardavviket er {:.2f}.\n".format(stddev)
 
     solutions[dictkey] = sol_string
 
@@ -366,10 +354,9 @@ def four_cummulative_graphs(level="a", seed_string="test", file_name="test.png",
  
     rnd.shuffle(plots)
  
-    if sol:
-        for num, plot in enumerate(plots):
-            if plot == cum_values:
-                repl[dictkey] = 'Fasiten er {}.'.format(['a)', 'b)', 'c)', 'd)'][num])
+    for num, plot in enumerate(plots):
+        if plot == cum_values:
+            solutions[dictkey] = 'Fasiten er {}.'.format(['a)', 'b)', 'c)', 'd)'][num])
  
     ax1.plot(plots[0])
     ax1.xaxis.set_ticks(np.arange(0, 20, 5))

@@ -15,9 +15,10 @@ Finn /median/, /gjennomsnitt/, /kvartilbredde/ og /standardavvik/ for følgende 
 {SENTRALMAALSOPPGAVEFASIT}
 
 * Frekvenstabell
-Velg en av frekvenstabellene under. Velger du den første, skal du finne /median/, /typetall/, /gjennomsnitt/ og /variasjonsbredde/. Velger du den andre, skal du kun finne /median/ og /gjennomsnitt/.
+Velg en av alternativene under.
 
 *Alternativ 1*
+Finn /median/, /typetall/, /gjennomsnitt/ og /variasjonsbredde/ for dataene undder.
 {FREKVENSTABELLHEADINGA}
 |-|-|
 {FREKVENSTABELLDATAA}
@@ -25,6 +26,7 @@ Velg en av frekvenstabellene under. Velger du den første, skal du finne /median
 {FREKVENSTABELLFASITA}
 
 *Alternativ 2*
+Finn /median/ og /gjennomsnitt/ for dataene under.
 {FREKVENSTABELLHEADINGB}
 |-|-|
 {FREKVENSTABELLDATAB}
@@ -55,6 +57,8 @@ Histogrammet under viser fordelingen av svar på en "hvor mange pastiller er det
 Under vises et stolpediagram og fire foreslåtte kummulative grafer. Hvilken av de fire alternativene tilhører dataene fra stolpediagrammet?
 
 {KUMMULATIVMATCH}
+
+{KUMMULATIVMATCHFASIT}
 
 * Foreslå visualisering
 Velg to av pounktene under og illustrer dem i hvert sitt diagram. Begrunn valget av diagram.
