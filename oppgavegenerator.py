@@ -25,12 +25,13 @@ number_of_students = 32
 replacements = {}
 
 solutions = {'{SENTRALMAALSOPPGAVEFASIT}' : "",
-                     '{FREKVENSTABELLFASITA}' : "",
-                     '{FREKVENSTABELLFASITB}' : "",
-                     '{NYTTSNITTFASIT}' : "",
-                     '{HISTOGRAMFASIT}' : "",
-                     '{ANALYSEOPPGAVEFASITA}' : "",
-                     '{ANALYSEOPPGAVEFASITB}' : ""}
+             '{FREKVENSTABELLFASITA}' : "",
+             '{FREKVENSTABELLFASITB}' : "",
+             '{NYTTSNITTFASIT}' : "",
+             '{HISTOGRAMFASIT}' : "",
+             '{KUMULATIVMATCHFASIT}' : "",
+             '{ANALYSEOPPGAVEFASITA}' : "",
+             '{ANALYSEOPPGAVEFASITB}' : ""}
 
  
 words_easy = ['median', 'typetall', 'gjennomsnitt', 'kvartilbredde']
@@ -47,12 +48,20 @@ def range_lst(lst):
     """Return the range of a list of numbers."""
     return max(lst) - min(lst)
 
-def interquartile_range_list(lst):
+def interquartile_range_list_factual(lst):
     """Return the interquartile range of a list of numbers."""
     lower = np.percentile(lst, 25)
     higher = np.percentile(lst, 75)
     return higher - lower
- 
+
+def interquartile_range_list(lst):
+    """Return the interquartile range of a list of numbers."""
+    if len(lst) != 15:
+        return interquartile_range_list_factual(lst)
+
+    sorted_lst = sorted(lst)
+    return sorted_lst[-4] - sorted_lst[3]
+
 def range_freq_table(lst_of_tups):
     """Return the range of the values in a frequency table."""
     values = [tup[0] for tup in lst_of_tups]
@@ -522,12 +531,12 @@ def create_assignment(group="testgroup", student=1, template=template, replaceme
     replacements['{DEFINISJONSOPPGAVE}'] = draw_words(
         words_easy)
     replacements['{SENTRALMAALSOPPGAVE}'] = pretty_print_list(
-        random_list_hard(15, dictkey='{SENTRALMAALSOPPGAVEFASIT}'))
+        random_list_hard(15, dictkey='{SENTRALMAALSOPPGAVEFASIT}')) # hardkodet femten for å passe med IQR
     replacements['{DIAGRAM}'] = insert_image(
         image_name)
     replacements['{NYTTSNITT}'] = nplusone_average(dictkey='{NYTTSNITTFASIT}')
-    replacements['{KUMMULATIVMATCH}'] = four_cummulative_graphs(
-        seed_string=name, file_name=image_name, dictkey='{KUMMULATIVMATCHFASIT}')
+    replacements['{KUMULATIVMATCH}'] = four_cummulative_graphs(
+        seed_string=name, file_name=image_name, dictkey='{KUMULATIVMATCHFASIT}')
     replacements['{ANALYSEOPPGAVEA}'] = analyse_oppgave(
         level="a", seed_string=name, dictkey='{ANALYSEOPPGAVEFASITA}')
     replacements['{ANALYSEOPPGAVEB}'] = analyse_oppgave(

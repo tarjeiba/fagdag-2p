@@ -1,4 +1,4 @@
-#+SETUPFILE:orgheader_nojs.org
+p#+SETUPFILE:orgheader_nojs.org
 #+Title: 2P fagdag - Statistikkoppgaver
 Du er elev {ELEVNUMMER} i klasse {KLASSE}.
 
@@ -54,11 +54,11 @@ Histogrammet under viser fordelingen av svar på en "hvor mange pastiller er det
 {HISTOGRAMFASIT}
 
 * Kumulativ match
-Under vises et stolpediagram og fire foreslåtte kummulative grafer. Hvilken av de fire alternativene tilhører dataene fra stolpediagrammet?
+Under vises et stolpediagram og fire foreslåtte kumulative grafer. Hvilken av de fire alternativene tilhører dataene fra stolpediagrammet?
 
-{KUMMULATIVMATCH}
+{KUMULATIVMATCH}
 
-{KUMMULATIVMATCHFASIT}
+{KUMULATIVMATCHFASIT}
 
 * Foreslå visualisering
 Velg to av pounktene under og illustrer dem i hvert sitt diagram. Begrunn valget av diagram.
@@ -67,9 +67,6 @@ Velg to av pounktene under og illustrer dem i hvert sitt diagram. Begrunn valget
 - Karakterfordelingen for en /skole/ etter en heldagsprøve i norsk (rundt 600 elever)
 - Gjennomsnittskarakteren for årets FIFA-spill for årene 1996 til 2017.
 - Aldersfordelingen for de som ser på Dagsrevyen mer enn to ganger hver uke.
-
-* Skisser
-For to av punktene i forrige oppgave, skisser hvordan en slik fordeling /kan/ se ut.
 
 * Statistisk analyse
 Velg ett av de to alternativene under.
