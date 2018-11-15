@@ -1,4 +1,4 @@
-p#+SETUPFILE:orgheader_nojs.org
+#+SETUPFILE:orgheader_nojs.org
 #+Title: 2P fagdag - Statistikkoppgaver
 Du er elev {ELEVNUMMER} i klasse {KLASSE}.
 

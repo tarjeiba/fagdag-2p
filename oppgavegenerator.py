@@ -13,16 +13,16 @@ colors = {
     'pink' : (0.8, 0.7, 1.0),
     }
  
-# groups = ['2PA4',
-#           '2PB4',
-#           '2PC4',
-#           '2PD4',
-#           '2PE4',
-#           '2PX4']
+groups = ['2PA4',
+          '2PB4',
+          '2PC4',
+          '2PD4',
+          '2PE4',
+          '2PX4']
 
-groups = ['test']
+# groups = ['test']
 
-number_of_students = 1
+number_of_students = 32
  
 replacements = {}
 
@@ -165,10 +165,10 @@ def histogram_addition():
     return "- Ut fra verdiene i histogrammet over, hva vil du tro mengden pastiller i krukka var?\n"
  
  
-def histogram_data(num=25, level="test", seed_string="test", sol=False, dictkey=None):
+def histogram_data(num, level="test", seed_string="test", sol=False, dictkey=None):
     return ([abs(int(rnd.gauss(25, 10))) for _ in range(num)], [0, 5, 25, 30, 40, 50])
  
-def plot_histogram(data, file_name="test_hist.png", seed_string="test", sol=False, dictkey=None):
+def plot_histogram(data, num, file_name="test_hist.png", seed_string="test", sol=False, dictkey=None):
     """Create a histogram.
      
     data is a tuple of two lists:
@@ -176,7 +176,7 @@ def plot_histogram(data, file_name="test_hist.png", seed_string="test", sol=Fals
     f_list = [f_ab, f_bc, f_cd, ...] # length n
     """
  
-    num = rnd.randint(25, 50)
+    # num = rnd.randint(25, 50)
     figure_name = file_name[:-4] + "_hist.png"
     plot_figure = plt.figure()
  
@@ -543,9 +543,12 @@ def create_assignment(group="testgroup", student=1, template=template, replaceme
         level="a", seed_string=name, dictkey='{ANALYSEOPPGAVEFASITA}')
     replacements['{ANALYSEOPPGAVEB}'] = analyse_oppgave(
         level="b", seed_string=name, dictkey='{ANALYSEOPPGAVEFASITB}')
+    hist_num = rnd.randint(20, 60)
     replacements['{HISTOGRAM}'] = plot_histogram(
-        histogram_data(seed_string=name, dictkey='{HISTOGRAMFASIT}'),
-        file_name=image_name, dictkey='{HISTOGRAMFASIT}')
+        histogram_data(num=hist_num,
+                       seed_string=name,
+                       dictkey='{HISTOGRAMFASIT}'),
+        num=hist_num, file_name=image_name, dictkey='{HISTOGRAMFASIT}')
     replacements['{HISTOGRAMADD}'] = histogram_addition()
     replacements['{ELEVNUMMER}'] = str(student)
     replacements['{KLASSE}'] = str(group)
