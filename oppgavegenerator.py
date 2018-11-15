@@ -13,14 +13,16 @@ colors = {
     'pink' : (0.8, 0.7, 1.0),
     }
  
-groups = ['2PA4',
-          '2PB4',
-          '2PC4',
-          '2PD4',
-          '2PE4',
-          '2PX4']
+# groups = ['2PA4',
+#           '2PB4',
+#           '2PC4',
+#           '2PD4',
+#           '2PE4',
+#           '2PX4']
 
-number_of_students = 32
+groups = ['test']
+
+number_of_students = 1
  
 replacements = {}
 
