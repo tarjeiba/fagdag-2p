@@ -165,32 +165,26 @@ def histogram_addition():
     return "- Ut fra verdiene i histogrammet over, hva vil du tro mengden pastiller i krukka var?\n"
  
  
-def histogram_data(num, level="test", seed_string="test", sol=False, dictkey=None):
-    return ([abs(int(rnd.gauss(25, 10))) for _ in range(num)], [0, 5, 25, 30, 40, 50])
- 
-def plot_histogram(data, num, file_name="test_hist.png", seed_string="test", sol=False, dictkey=None):
-    """Create a histogram.
-     
-    data is a tuple of two lists:
-    g_list = [a, b, c, d, e, ...] # length n + 1
-    f_list = [f_ab, f_bc, f_cd, ...] # length n
-    """
- 
-    # num = rnd.randint(25, 50)
+def plot_histogram(file_name="test_hist.png", seed_string="test", sol=False, dictkey=None):
+
+    num = rnd.randint(25, 50)
     figure_name = file_name[:-4] + "_hist.png"
     plot_figure = plt.figure()
- 
+
+    data = ([min(50, abs(int(rnd.gauss(25,10)))) for _ in range(num)],
+            [0, 5, 25, 30, 40, 50])
+
     ax = plot_figure.add_subplot(111)
-    hist, bins_ = np.histogram(data[0], bins=data[1], density=True)
-    hist_data = [num * x for x in hist]
+    hist, bins_ = np.histogram(data[0], bins=data[1])
     widths = [bins_[i+1] - bins_[i] for i in range(len(bins_)-1)]
+    hist_data = [h / w  for (h, w) in zip(hist, widths)]
     lefts = [bins_[i] + widths[i]/2 for i in range(len(widths))]
  
     ax.bar(lefts, hist_data, width=widths)
  
     for x, y, w in zip(lefts, hist_data, widths):
-        ax.text(x, y, "{:.3f}".format(y))
- 
+        ax.text(x, y, "{:.2f}".format(y))
+
     ax.grid(linestyle="dashed", which='both')
     ax.yaxis.set_minor_locator(AutoMinorLocator(5))
     ax.set_xticks(bins_)
@@ -543,12 +537,8 @@ def create_assignment(group="testgroup", student=1, template=template, replaceme
         level="a", seed_string=name, dictkey='{ANALYSEOPPGAVEFASITA}')
     replacements['{ANALYSEOPPGAVEB}'] = analyse_oppgave(
         level="b", seed_string=name, dictkey='{ANALYSEOPPGAVEFASITB}')
-    hist_num = rnd.randint(20, 60)
-    replacements['{HISTOGRAM}'] = plot_histogram(
-        histogram_data(num=hist_num,
-                       seed_string=name,
-                       dictkey='{HISTOGRAMFASIT}'),
-        num=hist_num, file_name=image_name, dictkey='{HISTOGRAMFASIT}')
+    replacements['{HISTOGRAM}'] = plot_histogram(file_name=image_name,
+                                                 dictkey='{HISTOGRAMFASIT}')
     replacements['{HISTOGRAMADD}'] = histogram_addition()
     replacements['{ELEVNUMMER}'] = str(student)
     replacements['{KLASSE}'] = str(group)
